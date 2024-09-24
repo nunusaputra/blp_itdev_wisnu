@@ -85,7 +85,7 @@ Authenticate a user
 ```json
 {
   "message": "Login Successfully!",
-  "data": "your_access_token"
+  "accessToken": "your_access_token"
 }
 ```
 
@@ -125,7 +125,7 @@ Call a new access token without having to re-login.
 ```json
 {
   "message": "Refresh token successfully!",
-  "data": "your_access_token"
+  "accessToken": "your_access_token"
 }
 ```
 

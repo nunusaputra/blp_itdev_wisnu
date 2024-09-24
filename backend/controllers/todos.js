@@ -37,7 +37,7 @@ module.exports = {
       });
     } catch (error) {
       res.status(500).json({
-        message: error.message,
+        message: "Internal Server Error",
       });
     }
   },
@@ -79,7 +79,7 @@ module.exports = {
       });
     } catch (error) {
       res.status(500).json({
-        message: error.message,
+        message: "Internal Server Error",
       });
     }
   },
@@ -87,11 +87,12 @@ module.exports = {
 
   //   -------------------------- START FEATURES GET TODOS BY ID -------------------------- //
   getTodosByID: async (req, res) => {
+    const { id } = req.params;
     try {
       // TODO: Get todos by id
       const todo = await Todos.findOne({
         where: {
-          id: req.params.id,
+          id,
         },
         attributes: {
           exclude: ["updatedAt"],
@@ -120,7 +121,7 @@ module.exports = {
       });
     } catch (error) {
       res.status(500).json({
-        message: error.message,
+        message: "Internal Server Error",
       });
     }
   },
@@ -132,7 +133,7 @@ module.exports = {
 
     if (!req.files) {
       return res.status(400).json({
-        message: "File not uploaded!",
+        message: "You must upload a file!",
       });
     }
 
@@ -142,7 +143,7 @@ module.exports = {
     let docsName = null;
 
     const allowedImageTypes = [".png", ".jpg", ".jpeg"];
-    const allowedDocsTypes = [".pdf", ".doc", ".docx"];
+    const allowedDocsTypes = [".pdf"];
 
     // TODO: Validation if image exists
     if (req.files.image) {
@@ -187,7 +188,7 @@ module.exports = {
       // TODO: Validation if file type is not allowed
       if (!allowedDocsTypes.includes(docsExt)) {
         return res.status(422).json({
-          message: "Invalid file type! Only PDF, DOC, DOCX are allowed.",
+          message: "Invalid file type! Only PDF are allowed.",
         });
       }
 
@@ -228,7 +229,7 @@ module.exports = {
       });
     } catch (error) {
       res.status(500).json({
-        message: error.message,
+        message: "Internal Server Error",
       });
     }
   },
@@ -296,12 +297,12 @@ module.exports = {
       const docsSize = docs.data.length;
       const docsExt = path.extname(docs.name).toLowerCase();
       documentFileName = docs.md5 + docsExt;
-      const allowedDocsTypes = [".pdf", ".doc", ".docx"];
+      const allowedDocsTypes = [".pdf"];
 
       // TODO: Validation if document type is not allowed
       if (!allowedDocsTypes.includes(docsExt)) {
         return res.status(422).json({
-          message: "Invalid document type! Only PDF, DOC, DOCX are allowed.",
+          message: "Invalid document type! Only PDF are allowed.",
         });
       }
 
@@ -360,7 +361,7 @@ module.exports = {
       });
     } catch (error) {
       res.status(500).json({
-        message: error.message,
+        message: "Internal Server Error",
       });
     }
   },
@@ -407,7 +408,7 @@ module.exports = {
       });
     } catch (error) {
       res.status(500).json({
-        message: error.message,
+        message: "Internal Server Error",
       });
     }
   },

@@ -92,7 +92,7 @@ module.exports = {
     } catch (error) {
       // * Response if failed submit new users to database
       res.status(500).json({
-        message: error.message,
+        message: "Internal Server Error",
       });
     }
   },
@@ -130,10 +130,10 @@ module.exports = {
       const id = user.id;
       const name = user.name;
       const email = user.email;
-      const profile = user.profile_pict;
+      const profileURL = user.profileURL;
 
       const accessToken = jwt.sign(
-        { id, name, email, profile },
+        { id, name, email, profileURL },
         process.env.ACCESS_TOKEN_SECRET,
         {
           expiresIn: "15m",
@@ -141,7 +141,7 @@ module.exports = {
       );
 
       const refreshToken = jwt.sign(
-        { id, name, email, profile },
+        { id, name, email, profileURL },
         process.env.REFRESH_TOKEN_SECRET,
         {
           expiresIn: "1d",
@@ -169,11 +169,11 @@ module.exports = {
       // * Response if success login
       res.status(200).json({
         message: "Login Successufully!",
-        data: accessToken,
+        accessToken,
       });
     } catch (error) {
       res.status(500).json({
-        message: error.message,
+        message: "Internal Server Error",
       });
     }
   },
@@ -223,7 +223,7 @@ module.exports = {
       });
     } catch (error) {
       res.status(500).json({
-        message: error.message,
+        message: "Internal Server Error",
       });
     }
   },
@@ -272,10 +272,10 @@ module.exports = {
             const id = user.id;
             const name = user.name;
             const email = user.email;
-            const profile = user.profile_pict;
+            const profileURL = user.profileURL;
 
             const accessToken = jwt.sign(
-              { id, name, email, profile },
+              { id, name, email, profileURL },
               process.env.ACCESS_TOKEN_SECRET,
               {
                 expiresIn: "20m",
@@ -285,18 +285,18 @@ module.exports = {
             // * Response if success refresh token
             res.status(200).json({
               message: "Refresh Token Successufully!",
-              data: accessToken,
+              accessToken,
             });
           } catch (error) {
             res.status(500).json({
-              message: error.message,
+              message: "Internal Server Error",
             });
           }
         }
       );
     } catch (error) {
       res.status(500).json({
-        message: error.message,
+        message: "Internal Server Error",
       });
     }
   },
@@ -329,7 +329,7 @@ module.exports = {
       });
     } catch (error) {
       res.status(500).json({
-        message: error.message,
+        message: "Internal Server Error",
       });
     }
   },

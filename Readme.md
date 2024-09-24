@@ -6,7 +6,7 @@ Aplikasi Todo List ini adalah sebuah website yang dirancang untuk membantu menge
 
 ## Demo Website
 
-Klik link berikut ini untuk melihat demo 👉 [Link Youtube](https://youtube.com)
+Klik link berikut ini untuk melihat demo 👉 [Link Youtube](https://youtu.be/PvTYOjn5jPU)
 
 ## Table of Contents
 
@@ -71,7 +71,11 @@ cd backend/
 npm install
 ```
 
-**3. Setup Environment Variabel**
+**3. Buat folder public** <br>
+Buat folder `public` dalam root backend directory, kemudian buat lagi 2 buah folder di dalam public yaitu `images` dan `documents` seperti contoh di bawah ini. <br>
+![public folder](./public.jpg)
+
+**4. Setup Environment Variabel** <br>
 Buat file .env pada root directory, lalu sesuaikan dengan contoh di bawah ini.
 
 ```js
@@ -80,7 +84,7 @@ ACCESS_TOKEN_SECRET = YOUR_ACCESS_TOKEN_SECRET;
 REFRESH_TOKEN_SECRET = YOUR_REFRESH_TOKEN_SECRET;
 ```
 
-**4. Setup Database** <br>
+**5. Setup Database** <br>
 Buka folder `config`, dan masuk ke file `config.json`. Kemudian sesuaikan settingan database anda pada bagian development.
 
 ```json
@@ -109,21 +113,21 @@ Buka folder `config`, dan masuk ke file `config.json`. Kemudian sesuaikan settin
 }
 ```
 
-**5. Create Database** <br>
+**6. Create Database** <br>
 Setelah anda menyesuaikan settingan database pada file `config.json`, langkah selanjutnya adalah create database tersebut dengan perintah `npx sequelize-cli db:create`. Namun pastikan anda mengaktifkan web server lokal `(laragon / xampp)` anda terlebih dahulu agar tidak terjadi error.
 
 ```bash
 npx sequelize-cli db:create
 ```
 
-**6. Migration Database** <br>
+**7. Migration Database** <br>
 Selanjutnya kita perlu melakukan migration terlebih dahulu dengan perintah berikut ini:
 
 ```bash
 npx sequelize-cli db:migrate
 ```
 
-**7. Jalankan Aplikasi Backend** <br>
+**8. Jalankan Aplikasi Backend** <br>
 Setelah semua proses selesai, anda bisa menjalankan aplikasi backend ini dengan perintah berikut:
 
 ```bash
@@ -150,7 +154,7 @@ cd frontend/
 npm install
 ```
 
-**3. Setup Environment Variabel**
+**3. Setup Environment Variabel** <br>
 Buat file .env pada root directory, lalu sesuaikan dengan contoh di bawah ini.
 
 ```js
